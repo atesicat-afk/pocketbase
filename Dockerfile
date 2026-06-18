@@ -12,8 +12,8 @@ RUN unzip /tmp/pb.zip -d /pb/
 
 EXPOSE 8080
 
-# Kopyahin ang custom server code (pb_hooks) papasok sa server!
+# Kopyahin ang custom server code papasok sa /pb/pb_hooks
 COPY pb_hooks /pb/pb_hooks
 
-# start PocketBase
-CMD ["/pb/pocketbase", "serve", "--http=0.0.0.0:8080"]
+# START POCKETBASE (Tiyak na itinuturo ang tamang folder ng database at hooks!)
+CMD ["/pb/pocketbase", "serve", "--http=0.0.0.0:8080", "--dir=/pb/pb_data", "--hooksDir=/pb/pb_hooks"]
